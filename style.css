@@ -1,0 +1,209 @@
+:root { /* Cible l'élément html au plus haut => spécificité plus haute que <html> */
+
+    /* Déclaration des variables COLORS */
+    --dark-cyan: hsl(158, 36%, 37%);
+    --cream: hsl(30, 38%, 92%);
+    --very-dark-blue: hsl(212, 21%, 14%);
+    --dark-grayish-blue: hsl(228, 12%, 48%);
+    --white: hsl(0, 0%, 100%);
+
+    /* Déclaration des variables FONT FAMILY */
+    --ff-regular: "Montserrat", sans-serif;
+    --ff-special: "Fraunces", serif;
+
+    /* Déclaration des variables FONT WEIGHTS */
+    --fw-medium: 500;
+    --fw-bold: 700;
+}
+
+* { /* Sélecteur universel */
+/* On reset les marges intérieures et extérieures */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* On applique le mode border-box pour que les padding+bordure s'appliquent à l'intérieur et non à l'extérieur de la boîte */
+}
+
+html {
+    font-size: 62.5%; /* Pour gérer les rem plus facilement => 1rem=1px */
+}
+
+body { 
+    font-family: var(--ff-regular);
+    font-size: 1.4rem; /* police=14px (normalisation 62.5%) */
+    font-weight: var(--ff--medium);
+    color: var(--dark-grayish-blue); /* couleur de police de base gris clair */
+    background: var(--cream);
+}
+
+main { /* On met le container principal en flex */
+    display: flex;
+    flex-direction: row; /* En ligne */
+    justify-content: center; /* On centre horizontalement le container */
+    align-items: center; /* On centre verticalement le container */
+    min-height: 100vh; /* On applique une hauteur de 100% à l'élément */
+}
+
+img {
+    max-width : 100%; /* Réduire la largeur de l'image et de ce fait la hauteur */
+    height: 55rem;
+    border-radius: 10px 0px 0px 10px ; /* Appliquer des arrondis aux coins */
+}
+
+/* *CSS du TEXTE* */
+
+.product-info { /* Cadre de droite en totalité */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--white);
+    border-radius: 0px 10px 10px 0px;
+    height: 55rem;
+    width: 370px;
+}
+
+.text-product { /* Texte de droite : titre h1 + paragraphe */
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.type { /*Met le texte "PERFUME" en majuscules et espace les lettres les unes par rapport aux autres */
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    letter-spacing: 4px;
+    padding: 2rem 1rem;
+}
+
+h1 { /* Titre principal */
+    font-family: var(--ff-special);
+    color: black;
+    font-size: 3.5rem;
+    line-height: 3.8rem;
+    padding: 2rem 1rem;
+}
+
+.description { /* Description du produit paragraphe */
+    letter-spacing: 0.05rem;
+    line-height: 2.5rem;
+    padding: 1.5rem 4rem 1.5rem 1rem;
+}
+
+/* * CSS DU PRIX * */
+
+.product-price { /* Flexbox pour les prix */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-top: 2em; /* Pour écarter par rapport au texte du haut le container des prix */
+    padding-bottom: 2em; /* Pour écarter par rapport au bouton du bas le container des prix */
+    width:31rem;
+}
+
+.new-price { /* Nouveau prix */
+    font-family: var(--ff-special);
+    font-size: 2.2em;
+    color : var(--dark-cyan);
+}
+
+.old-price { /* Ancien prix */
+    text-decoration: line-through;
+    padding-left: 2em;
+}
+
+/* *CSS DU BUTTON* */
+
+button { /* Bouton */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Couleur du texte dans le bouton */
+    background-color: var(--dark-cyan); /* couleur de fond du bouton */
+    border-radius: 0.8rem; /* Arrondissement de la bordure dans les coins */
+    border-style: none; /* Enleve la bordure de base de la balise bouton (grisée) */
+    text-align: center;
+    height: 5rem;
+    width: 84%;
+    gap: 1.5rem; /* Espace entre l'image et le texte dans le bouton */
+    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
+}
+
+button img { /* Image dans le bouton */
+    display:flex;
+    width: 2rem;
+    height: 2rem;
+}
+
+button:hover{ /* Colorisation du bouton au survol */
+    background-color: var(--very-dark-blue);
+}
+
+/* *MEDIA QUERY* */
+
+@media screen and (max-width:800px) {
+
+.container {
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.mobile-image { 
+    display: block;
+    width: 370px;
+    height: 270px;
+    border-radius: 10px 10px 0 0;
+}
+
+.desktop-image {
+    display: none;
+}
+
+.product-info {
+    max-width: 370px;
+    max-height: 420px;
+    border-radius: 0 0 10px 10px;
+}
+
+.type {
+    padding-left: 10px;
+    height: 50px;
+}
+
+.text-product {
+    width: 90%;
+}
+
+.description {
+    padding: 0 10px;
+    height: 100px;
+}
+
+.product-price { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width:90%;
+    padding-left: 5px;
+    height: 50px;
+}
+
+.new-price { /* Nouveau prix */
+    font-family: var(--ff-special);
+    font-size: 2.2em;
+    color : var(--dark-cyan);
+}
+
+.old-price { /* Ancien prix */
+    text-decoration: line-through;
+    padding-left: 2em;
+}
+
+button {
+    width: 90%;
+}
+
+}
